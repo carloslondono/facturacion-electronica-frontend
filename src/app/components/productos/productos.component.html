@@ -1,0 +1,22 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Estado</th>
+      <th>Fecha Creación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productos">
+      <td>{{producto.productId}}</td>
+      <td>{{producto.code}}</td>
+      <td>{{producto.name}}</td>
+      <td>{{producto.price}}</td>
+      <td>{{producto.active}}</td>
+      <td>{{producto.creationDate}}</td>
+    </tr>
+  </tbody>
+</table>
