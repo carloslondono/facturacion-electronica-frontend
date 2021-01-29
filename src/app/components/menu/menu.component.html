@@ -23,5 +23,19 @@
         <a class="nav-link" href="#" routerLink="/ventas" routerLinkActive="active">Ventas</a>
       </li>
     </ul>
+    <ul class="navbar-nav navbar-right">
+      <li *ngIf="!authenticado()">
+        <a href="#" class="btn btn-outline-primary" routerLink="/login" routerLinkActive="active">Ingresar</a>
+      </li>
+      <li *ngIf="authenticado()" class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{usuario}}
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <button (click)="logout()" type="submit" class="dropdown-item">Sign Out</button>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>
