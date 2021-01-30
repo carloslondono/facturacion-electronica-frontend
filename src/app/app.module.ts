@@ -10,7 +10,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ProductosFormComponent } from './components/productos/productos-form.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MatPaginatorModule } from '@angular/material/paginator'
     ClientesComponent,
     VentasComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    ProductosFormComponent
   ],
   imports: [
     BrowserModule,

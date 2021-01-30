@@ -32,16 +32,47 @@ export class ProductoService {
     return false;
   }
 
-  /*public listar(): Observable<Producto[]>{
-    return this.http.get<Producto[]>(this.baseEndPoint);
-  }*/
-
   public listarProductos(page: string, size:string): Observable<any>{
     const params = new HttpParams()
     .set('page', page)
     .set('size', size);
     return this.http.get<any>(`${this.baseEndPoint}/paginador`, {params: params, headers: this.agregarAuthorizationHeader() })
     .pipe(catchError(e => {
+      this.isNoAuthorizado(e);
+      return throwError(e);
+    }));
+  }
+
+  public listar(): Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.baseEndPoint, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
+      this.isNoAuthorizado(e);
+      return throwError(e);
+    }));
+  }
+
+  public ver(id: number): Observable<Producto>{
+    return this.http.get<Producto>(`${this.baseEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
+      this.isNoAuthorizado(e);
+      return throwError(e);
+    }));
+  }
+
+  public crear(producto: Producto): Observable<Producto>{
+    return this.http.post<Producto>(this.baseEndPoint, producto, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
+      this.isNoAuthorizado(e);
+      return throwError(e);
+    }));
+  }
+
+  public editar(producto: Producto): Observable<Producto>{
+    return this.http.put<Producto>(`${this.baseEndPoint}/${producto.productId}`, producto, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
+      this.isNoAuthorizado(e);
+      return throwError(e);
+    }));
+  }
+
+  public eliminar(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.baseEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
       this.isNoAuthorizado(e);
       return throwError(e);
     }));
