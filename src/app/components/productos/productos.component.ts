@@ -37,7 +37,7 @@ export class ProductosComponent implements OnInit {
     this.service.listarProductos(this.paginaActual.toString(), this.totalPorPagina.toString()).subscribe(productos => {
       this.productos = productos.content as Producto[];
       this.totalRegistros = productos.totalElements as number;
-      this.pagginador._intl.itemsPerPageLabel = 'Registros por Página: ';
+      //this.pagginador._intl.itemsPerPageLabel = 'Registros por Página: ';
     })
   }
 

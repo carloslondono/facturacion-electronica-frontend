@@ -22,7 +22,7 @@ export class ProductosFormComponent implements OnInit {
       if(id){
         this.productoServicio.ver(id).subscribe(producto => this.producto = producto);
       }
-    })
+    });
   }
 
   crear(): void{

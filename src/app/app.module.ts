@@ -11,7 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ProductosFormComponent } from './components/productos/productos-form.component'
+import { ProductosFormComponent } from './components/productos/productos-form.component';
+import { VentasFormComponent } from './components/ventas/ventas-form.component';
+import { VentasDetalleComponent } from './components/ventas/ventas-detalle.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProductosFormComponent } from './components/productos/productos-form.co
     VentasComponent,
     MenuComponent,
     LoginComponent,
-    ProductosFormComponent
+    ProductosFormComponent,
+    VentasFormComponent,
+    VentasDetalleComponent
   ],
   imports: [
     BrowserModule,

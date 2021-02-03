@@ -3,15 +3,15 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Cliente } from '../models/cliente';
+import { Ventaproducto } from '../models/ventaproducto';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class VentaproductoService {
 
-  private baseEndPoint = 'http://localhost:8080/clients'
+  private baseEndPoint = 'http://localhost:8080/saleproducts'
 
   private cabeceras: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
@@ -33,15 +33,15 @@ export class ClienteService {
     return false;
   }
 
-  public listar(): Observable<Cliente[]>{
-    return this.http.get<Cliente[]>(this.baseEndPoint, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
+  public crear(ventaProducto: Ventaproducto): Observable<Ventaproducto>{
+    return this.http.post<Ventaproducto>(this.baseEndPoint, ventaProducto, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
       this.isNoAuthorizado(e);
       return throwError(e);
     }));
   }
 
-  public ver(id: number): Observable<Cliente>{
-    return this.http.get<Cliente>(`${this.baseEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
+  public eliminar(id: number): Observable<void>{
+    return this.http.delete<void>(`${this.baseEndPoint}/${id}`, {headers: this.agregarAuthorizationHeader()}).pipe(catchError(e => {
       this.isNoAuthorizado(e);
       return throwError(e);
     }));
